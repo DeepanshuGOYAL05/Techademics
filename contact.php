@@ -151,7 +151,13 @@ mysqli_close($con);
           <div class="col-sm-12">
 		  
 		<!-- <p style="color: white; margin-top:25px; float: right; font-size:20px; margin-bottom:15px; margin-right:465px;"><?PHP  echo 'Welcome, '.$fname[0];  ?></p>
--->
+--> <ul class="social-network">
+<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
 		 
 			
           </div>
@@ -161,7 +167,7 @@ mysqli_close($con);
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" >
     <div class="container" >
-      <a class="navbar-brand" href="index.html" style="text-transform: uppercase; font-size:35px;  "> Techademics</a>
+      <a class="navbar-brand" href="index.php" style="text-transform: uppercase; font-size:35px;  "> Techademics</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -169,19 +175,16 @@ mysqli_close($con);
 
         <ul class="navbar-nav ml-auto" style="float: right;">
 
-          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-		  <a class="nav-link" href="../logout.php">
-			<img id="logout" style="z-index:15; background-color:white;  float:right;" src="../logout.png">
-            <span class="sr-only">(current)</span>
-            </a>
+          
+		  <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
+            <a class="nav-link" href="index.php">Home</a>
           </li>
-
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-            <a class="nav-link" href="#">Help</a>
+            <a class="nav-link" href="help.php">Help</a>
           </li>
 
          
@@ -212,15 +215,7 @@ mysqli_close($con);
 			<div class="form-group">
                  <input type="tel" class="form-control" pattern="[6-9]{1}[0-9]{9}"  name="phone" placeholder="Phone(optinal) EX 9213298761"/>
 			</div>
-			<select class="form-group" name="type" id="acctype">
-            <option value="t">Teacher</option>  
-  						<option value="s">Student</option>
-  						<option value="p">Parent</option>  
-  						
-					</select>
-              
-					<label for="studid" id="ls_uid"><h3>Enter ward's userid:</h3></label>
-  					<input type="text" class="form-group" value="<?PHP if($_GET['submit']=='true'){echo $_POST['studid'];}?>" id="s_uid" name="studid">
+			
 			<div class="form-group">
                 <textarea class="form-control"    placeholder="Message*" name="msgtxt" rows="3" col="10" required/></textarea/>
             </div>
@@ -231,8 +226,9 @@ mysqli_close($con);
 	</div>
     <div class="col-sm-4" style="padding:30px;">
 	   <div class="form-group">
-           <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<b>7988587806</b><br><br>
-			<i class="fa fa-home" aria-hidden="true"></i>&nbsp; Old Railway Road, Mohindergarh<br>(24*7 Days)
+	    Contact:<br>
+           <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<b>+91-7988587806/8198952284</b><br><br>
+			<i class="fa fa-home" aria-hidden="true"></i>&nbsp; Old Railway Road, Mohindergarh<br>
 	       
 	   </div>
 	</div>

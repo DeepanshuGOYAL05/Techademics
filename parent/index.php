@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">	
 <head>
-	<title>Teacher | EdVu</title>
+	<title>Teacher | Techademics</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	 <meta charset="utf-8"> 
 	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -107,25 +107,25 @@ if ($result2=mysqli_query($con,"SELECT * FROM `parent` where `id`=".$userarr[1])
         <ul class="navbar-nav ml-auto" style="float: right;">
 
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-		  <a class="nav-link" href="../logout.php">
+		  <a  href="../logout.php">
 			<img id="logout" style="z-index:15; background-color:white;  float:right;" src="../logout.png">
             <span class="sr-only">(current)</span>
             </a>
           </li>
-
+		  <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
+			<a class="nav-link" href="index.php">Home</a>
+			
+          </li>
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="../about.php">About</a>
           </li>
 
          
           <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
-			<a class="nav-link" href="../contact.php">Help</a>
+			<a class="nav-link" href="../help.php">Help</a>
 			
           </li>
-		  <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
-			<a class="nav-link" href="../contact.php">Contact</a>
-			
-          </li>
+		  
 
         </ul>
       </div>

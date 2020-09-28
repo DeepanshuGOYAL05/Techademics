@@ -191,7 +191,7 @@ mysqli_close($con);
 </div>
 
 <div class="container-fluid">
-  <img src="../about.bmp" width='100%'/>
+  <img src="about.jpg" width='100%'/>
 </div>
 <br><br>
 <div class="container-fluid" style="background:black; opacity:0.60;">

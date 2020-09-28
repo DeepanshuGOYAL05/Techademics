@@ -124,7 +124,7 @@ if(isset($_POST['cid'])){
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" >
     <div class="container" >
-      <a class="navbar-brand" href="index.html" style=" font-size:30px;  ">Teacher's Portal:  <?PHP 		if(!isset($_GET['action'])){ echo 'Welcome, '.explode(' ', $_SESSION['name'])[0]; }  ?></a>
+      <a class="navbar-brand" href="index.php" style=" font-size:30px;  ">Teacher's Portal:  <?PHP 		if(!isset($_GET['action'])){ echo 'Welcome, '.explode(' ', $_SESSION['name'])[0]; }  ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -132,13 +132,15 @@ if(isset($_POST['cid'])){
 
         <ul class="navbar-nav ml-auto" style="float: right;">
 
-          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-		  <a class="nav-link" href="../logout.php">
+          
+		  <a href="../logout.php">
 			<img id="logout" style="z-index:15; background-color:white;  float:right;" src="../logout.png">
-            <span class="sr-only">(current)</span>
+            
             </a>
           </li>
-
+		  <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
             <a class="nav-link" href="../about.php">About</a>
           </li>
@@ -146,7 +148,7 @@ if(isset($_POST['cid'])){
        
          
           <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
-			<a class="nav-link" href="../contact.php">Help</a>
+			<a class="nav-link" href="../help.php">Help</a>
 			
           </li>
         </ul>
@@ -227,26 +229,21 @@ if(isset($_POST['cid'])){
 		<div class="bgvd inner">
 		<div class="row">
 			<div class="col-sm-12"><br><br>
-				<button type="button" class="btn btn-success goto" style="width:90%" data="1,newCourse.php">Create new course</button><br><br>
-				<button type="button" class="btn btn-info" style="width:90%" data-toggle="collapse" data-target="#viewC">View courses</button><br><br><!-- Add students option in this plus create new course -->
-				<div id="viewC" class="collapse">
-					<ul>
-					<?PHP 
-						if ($result24=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
-  					{
- 		 				
-  				 		while ($rowewe4=mysqli_fetch_row($result24))
-  			 			{
-
- 		       				echo '<li>'.$rowewe4[1].'</li>';
-
-  			 			}
-  			 }
-					?>
-					
-					</ul>
-				</div>
-				<button type="button" class="btn btn-warning" style="width:90%" data-toggle="collapse" data-target="#cwork">Upload Coursework</button><br>
+			<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#newBatch" style="width:90%" >Create a new batch</button>
+				
+				<div id="newBatch" class="collapse">
+					<div class="form-group">
+					<form method="post" action="index.php?action=newBatch">
+  						<label for="usr"><h3>Name of batch:</h3></label>
+  						<input type="text" style="width:80%" class="form-control" name="batchname" id="batchname"  autocomplete="off">
+						  <br>
+  					<input type="submit" value="Create!"  class="btn btn-success" style="width:80%">	
+  					</form>	
+					</div>
+				</div><br><br>
+				<button type="button" class="btn btn-warning goto" style="width:90%" data="1,newCourse.php">Create new course</button><br><br>
+				
+				<button type="button" class="btn btn-success" style="width:90%" data-toggle="collapse" data-target="#cwork">Upload Coursework</button><br>
 				<div id="cwork" class="collapse">
 					<div class="form-group">
 					<form method="post" action="addcw.php">
@@ -271,6 +268,24 @@ if(isset($_POST['cid'])){
   					</form>	
 					</div>
 				</div><br><hr class="hr1"><br>
+				<button type="button" class="btn btn-info" style="width:90%" data-toggle="collapse" data-target="#viewC">View courses</button><br><br><!-- Add students option in this plus create new course -->
+				<div id="viewC" class="collapse">
+					<ul>
+					<?PHP 
+						if ($result24=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
+  					{
+ 		 				
+  				 		while ($rowewe4=mysqli_fetch_row($result24))
+  			 			{
+
+ 		       				echo '<li>'.$rowewe4[1].'</li>';
+
+  			 			}
+  			 }
+					?>
+					
+					</ul>
+				</div>
 				<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#addClass" style="width:90%" >Schedule a class</button>
 				<div id="addClass" class="collapse">
 					<div class="form-group">
@@ -294,9 +309,9 @@ if(isset($_POST['cid'])){
   					</form>	
 					</div>
 				</div><br><br>
-				<button type="button" class="btn btn-info goto" style="width:90%" data="1,https://docs.google.com/forms/d/1O3b0K5O77nCEGxOwDZ_ha4yfZazmZ8jwMqMntxYfcI0/edit">Schedule a Quiz</button><br><br>
+				<button type="button" class="btn btn-info goto" style="width:90%" data="1,https://docs.google.com/forms/d/18bLy5n8Hk3VJjNzE7GZAVL5DhfFXynbC85T4ajS_pY4/edit?usp=sharing">Schedule a Quiz</button><br><br>
 				
-				<button type="button" class="btn btn-warning nowr" style="width:90%" data="1,attend.php">---------Upload Homework Assignments</button><br><hr class="hr1"><br>
+				<hr class="hr1"><br>
 				<button type="button" class="btn btn-success " style="width:90%" data-toggle="collapse" data-target="#addAssign">Add an assessment</button>
 				
 				<div id="addAssign" class="collapse">
@@ -332,6 +347,7 @@ if(isset($_POST['cid'])){
   						<input type="text" style="width:80%" class="form-control" name="maxmarks" id="maxmarks"  autocomplete="off">
   						<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
   						<input type="text" style="width:80%" class="form-control" name="aadate" id="aadate"  autocomplete="off">
+						  <br>
   					<input type="submit" value="Add!"  class="btn btn-success" style="width:80%">	
   					</form>	
 					</div>
@@ -355,26 +371,17 @@ if(isset($_POST['cid'])){
 					
 					</ul>
 				</div><!-- add marks here -->
-				<button type="button" class="btn btn-warning nowr" style="width:90%" data="1,attend.php">------------Post evaluation of assignments</button><br><hr class="hr1"><br>
+				<hr class="hr1"><br>
 				<!-- <button type="button" class="btn btn-success nowr" style="width:90%" data="1,attend.php">	Add a project</button><br><br> -->
-				<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#newBatch" style="width:90%" >Create a new batch</button>
 				
-				<div id="newBatch" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=newBatch">
-  						<label for="usr"><h3>Name of batch:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="batchname" id="batchname"  autocomplete="off">
-  					<input type="submit" value="Create!"  class="btn btn-success" style="width:80%">	
-  					</form>	
-					</div>
-				</div>
-				<br><br>
+				
 				<button type="button" class="btn btn-warning" style="width:90%"  data-toggle="collapse" data-target="#holiday">Declare a holiday</button><br>
 				<div id="holiday" class="collapse">
 					<div class="form-group">
 					<form method="post" action="index.php?action=holiday">
   						<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
   						<input type="text" style="width:80%" class="form-control" name="hdate" id="hdate"  autocomplete="off">
+						  <br>
   					<input type="submit" value="Declare a holiday!"  class="btn btn-success" style="width:80%">	
   					</form>	
 					</div>
@@ -386,6 +393,7 @@ if(isset($_POST['cid'])){
 					<form method="post" action="index.php?action=ptm">
   						<label for="pdate"><h3>Date(YYYY-MM-DD):</h3></label>
   						<input type="text" style="width:80%" class="form-control" name="pdate" id="pdate"  autocomplete="off">
+						  <br>
   					<input type="submit" value="Notify!"  class="btn btn-danger" style="width:80%">	
   					</form>	
 					</div>

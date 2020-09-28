@@ -116,7 +116,7 @@ if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
         <ul class="navbar-nav ml-auto" style="float: right;">
 
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-		  <a class="nav-link" href="../logout.php">
+		  <a  href="../logout.php">
 			<img id="logout" style="z-index:15; background-color:white;  float:right;" src="../logout.png">
             <span class="sr-only">(current)</span>
             </a>

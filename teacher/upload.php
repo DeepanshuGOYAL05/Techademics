@@ -42,7 +42,7 @@ if (mysqli_connect_errno())
 <body>
 	<div class="container"><center>
 		<div class="row">
-			<div class="col-sm-12" id="head">Ed-Vu</div>
+			<div class="col-sm-12" id="head">Techademics</div>
 		</div>
 		Hi, !
 		<div class="row">
