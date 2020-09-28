@@ -1,6 +1,14 @@
-
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 28, 2020 at 02:48 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -10,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `SchoolData`
+-- Database: `schooldata`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +61,7 @@ CREATE TABLE `attend` (
 CREATE TABLE `cenroll` (
   `cid` int(11) NOT NULL,
   `sid` int(11) NOT NULL,
-  `grade` int(11) NOT NULL DEFAULT '0'
+  `grade` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,11 +98,10 @@ CREATE TABLE `cnroll` (
 --
 
 INSERT INTO `cnroll` (`cid`, `cname`, `tid`, `tname`, `batch`) VALUES
-(4, 'AI', 1, 0, 'btech16'),
-(6, 'Artificial Intelligence', 1, 0, 'btech16'),
-(7, 'Discreet Math', 1, 0, 'btech16'),
-(8, 'Algorithms and Data Structures', 1, 0, 'btech16'),
-(9, 'abcdef', 1, 0, 'btech16'),
+(4, 'Artificial Intelligence', 1, 0, 'btech16'),
+(6, 'Microprocessor', 1, 0, 'btech16'),
+(7, 'Discrete Math', 1, 0, 'btech16'),
+(9, 'Software Engineering', 1, 0, 'btech16'),
 (10, 'Algorithms', 1, 0, 'btech16'),
 (11, 'Cryptography', 1, 0, 'btech16');
 
@@ -117,10 +124,10 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `cname`, `tid`, `tname`, `nclass`) VALUES
-(4, 'AI', 1, 'Gilbert	Hanson', '0000-00-00'),
-(6, 'Artificial Intelligence', 1, 'Gilbert	Hanson', '2016-10-20'),
-(7, 'Discreet Math', 1, 'Gilbert	Hanson', '2016-10-20'),
-(9, 'abcdef', 1, 'Gilbert	Hanson', '2017-10-10'),
+(4, 'Artificial Intelligence', 1, 'Gilbert	Hanson', '0000-00-00'),
+(6, 'Microprocessor', 1, 'Gilbert	Hanson', '2016-10-20'),
+(7, 'Discrete Math', 1, 'Gilbert	Hanson', '2016-10-20'),
+(9, 'Software Engineering', 1, 'Gilbert	Hanson', '2017-10-10'),
 (10, 'Algorithms', 1, 'Gilbert	Hanson', '2017-01-05'),
 (11, 'Cryptography', 1, 'Gilbert	Hanson', '2017-11-10');
 
@@ -144,7 +151,8 @@ CREATE TABLE `cwork` (
 --
 
 INSERT INTO `cwork` (`id`, `cid`, `tid`, `title`, `descr`, `url`) VALUES
-(1, 10, 1, 'Intro3', NULL, 'http://youtube.com/');
+(1, 10, 1, 'Intro3', NULL, 'http://youtube.com/'),
+(2, 4, 1, 'Please follow the below tutorials', NULL, 'https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI');
 
 -- --------------------------------------------------------
 
@@ -179,7 +187,9 @@ INSERT INTO `days` (`id`, `date`, `type`, `descr`, `cid`, `tid`) VALUES
 (16, '2017-11-01', 2, NULL, NULL, 1),
 (17, '2017-11-01', 2, NULL, NULL, 1),
 (18, '2016-10-10', 4, NULL, NULL, 1),
-(19, '2017-01-10', 4, NULL, NULL, 1);
+(19, '2017-01-10', 4, NULL, NULL, 1),
+(20, '2020-10-05', 3, NULL, 7, 1),
+(21, '2020-10-05', 3, NULL, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -215,7 +225,10 @@ INSERT INTO `feed` (`tid`, `id`, `tname`, `title`, `exp_date`, `batch`) VALUES
 (1, 14, 'Gilbert	Hanson', '<span id=http://google.com class=impp>Professor Gilbert	Hansonupdated the coursework on AI </span>', '0000-00-00', ''),
 (1, 15, 'Gilbert	Hanson', '<a href=http://google.com >Professor Gilbert	Hansonupdated the coursework on AI </a>', '2016-10-06', 'btech16'),
 (1, 16, 'Gilbert	Hanson', '<a href=http://youtube.com >Professor Gilbert	Hanson added DM intro to the coursework on Discreet Math </a>', '2016-10-06', 'btech16'),
-(1, 17, 'Gilbert	Hanson', '<a href=http://youtube.com/ >Professor Gilbert	Hanson added Intro3 to the coursework on Algorithms </a>', '2016-10-06', 'btech16');
+(1, 17, 'Gilbert	Hanson', '<a href=http://youtube.com/ >Professor Gilbert	Hanson added Intro3 to the coursework on Algorithms </a>', '2016-10-06', 'btech16'),
+(1, 18, 'Gilbert	Hanson', 'There will be an Mathematics Assignment exam of 100 marks on Gilbert	Hanson on 2020-10-05 ', '2020-10-05', 'all'),
+(1, 20, 'Gilbert	Hanson', '<a href=https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI >Professor Gilbert	Hanson added Please follow the below tutorials to the coursework on AI </a>', '2020-09-30', 'btech16'),
+(1, 22, 'Gilbert	Hanson', '<a href= >Professor Gilbert	Hanson added  to the coursework on Artificial Intelligence </a>', '2020-10-01', 'btech16');
 
 -- --------------------------------------------------------
 
@@ -268,7 +281,7 @@ INSERT INTO `parent` (`id`, `pname`, `sid`, `sname`, `email`, `pwd`) VALUES
 CREATE TABLE `stud` (
   `id` int(11) NOT NULL,
   `sname` varchar(2000) NOT NULL,
-  `points` int(11) NOT NULL DEFAULT '0',
+  `points` int(11) NOT NULL DEFAULT 0,
   `email` varchar(200) DEFAULT NULL,
   `pwd` varchar(2000) NOT NULL,
   `batch` varchar(20) NOT NULL DEFAULT 'btech16'
@@ -281,7 +294,30 @@ CREATE TABLE `stud` (
 INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES
 (1, 'Tameesh Biswas', 0, 'tameeshbiswas1998@gmail.com', 'pswd', 'btech16'),
 (2, 'Shaurya Gupta', 0, 'sha@student.org', 'pswd', 'btech16'),
-(3, 'Saraansh Chopra', 0, 'saraansh@student.org', 'pswd', 'btech16');
+(3, 'Saraansh Chopra', 0, 'saraansh@student.org', 'pswd', 'btech16'),
+(4, 'Deepanshu Goyal', 0, 'goyaldeepanshu0098@gmail.com', 'pswd', 'btech16'),
+(7, 'Test data', 0, 'testabc@gmail.com', 'pswd', 'btech16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblmessage`
+--
+
+CREATE TABLE `tblmessage` (
+  `fld_msg_id` int(10) NOT NULL,
+  `fld_name` varchar(50) NOT NULL,
+  `fld_email` varchar(50) NOT NULL,
+  `fld_phone` bigint(10) DEFAULT NULL,
+  `fld_msg` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tblmessage`
+--
+
+INSERT INTO `tblmessage` (`fld_msg_id`, `fld_name`, `fld_email`, `fld_phone`, `fld_msg`) VALUES
+(1, 'Parth', 'parth23@gmail.com', 7894561234, 'Hi, I have Doubt regarding the course.');
 
 -- --------------------------------------------------------
 
@@ -301,11 +337,11 @@ CREATE TABLE `teachr` (
 --
 
 INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES
-(1, 'Gilbert	Hanson', 'teacher@t.com', 'pswd'),
-(2, 'teacher2', 'teacher2', 'pswd'),
-(3, 'Teacher2 prof', 'Imateacheryo@teacher.yo', 'pswd'),
-(4, 'Kalpana Chawla', 'me@me.com', 'pswd'),
-(5, 'ABC defghijk', 'Hahahajaj@jsks.com', 'pswd');
+(1, 'Gilbert	Hanson', 'gilbert01@techademics.com', 'pswd'),
+(2, 'Doris Wilson', 'doris01@techademics.com', 'pswd'),
+(3, 'Edna Francis', 'edna05@techademics.com', 'pswd'),
+(4, 'Irene Bell', 'irenebell@techademics.com', 'pswd'),
+(5, 'Ruth Emmons', 'ruthemmons1@techademics.com', 'pswd');
 
 -- --------------------------------------------------------
 
@@ -328,7 +364,8 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`testid`, `name`, `cid`, `date`, `tid`, `maxmarks`, `batch`) VALUES
-(1, 'Midsems', 4, '2016-10-08', 1, 100, 'btech16');
+(1, 'Midsems', 4, '2016-10-08', 1, 100, 'btech16'),
+(2, 'Mathematics Assignment', 7, '2020-10-05', 1, 100, 'btech16');
 
 -- --------------------------------------------------------
 
@@ -356,6 +393,12 @@ ALTER TABLE `class`
   ADD PRIMARY KEY (`classid`);
 
 --
+-- Indexes for table `cnroll`
+--
+ALTER TABLE `cnroll`
+  ADD UNIQUE KEY `cid` (`cid`);
+
+--
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
@@ -365,6 +408,7 @@ ALTER TABLE `course`
 -- Indexes for table `cwork`
 --
 ALTER TABLE `cwork`
+  ADD UNIQUE KEY `id_2` (`id`),
   ADD KEY `id` (`id`);
 
 --
@@ -398,6 +442,12 @@ ALTER TABLE `stud`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tblmessage`
+--
+ALTER TABLE `tblmessage`
+  ADD PRIMARY KEY (`fld_msg_id`);
+
+--
 -- Indexes for table `teachr`
 --
 ALTER TABLE `teachr`
@@ -418,51 +468,68 @@ ALTER TABLE `tests`
 --
 ALTER TABLE `class`
   MODIFY `classid` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `cwork`
 --
 ALTER TABLE `cwork`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `days`
 --
 ALTER TABLE `days`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `feed`
 --
 ALTER TABLE `feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `homework`
 --
 ALTER TABLE `homework`
   MODIFY `hid` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `stud`
 --
 ALTER TABLE `stud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tblmessage`
+--
+ALTER TABLE `tblmessage`
+  MODIFY `fld_msg_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `teachr`
 --
 ALTER TABLE `teachr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `testid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `testid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
