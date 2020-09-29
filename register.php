@@ -21,8 +21,8 @@
 	</style>
 	<script>
 		$(document).ready(function(){
-			var myvar='<center><h1>Account created!</h1><h2>user ID is<br></h2></center>';
-      var btnvar ='<button type="button" class="form-submit goto" style="width:81%" data="0,index.php">Go to login page</button>';
+			var myvar='<div class="container"><center><h1>Account created!</h1><h2>user ID is<br></h2></center></div>';
+      var btnvar ='<div class="container"><center><button type="button" class="form-submit goto" style="width:81%" data="0,index.php">Go to login page</button></center></div>';
 		<?PHP
 	include'gen.php';
     $con = mysqli_connect($servername,$username,$password,$dbname);
@@ -93,7 +93,7 @@ if (mysqli_connect_errno())
 if($_POST['type']=='s'){
 			$query2='SELECT `id` FROM `stud` ORDER BY `id` ASC';
 			//student
-			$sql = "INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`) VALUES (NULL, '".$_POST['name']."', '0', '".$_POST['email']."', '".$_POST['pswd']."');";
+			$sql = "INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES (NULL, '".$_POST['name']."', '0', '".$_POST['email']."', '".$_POST['pswd']."','".$_POST['batch']."');";
 			
 		}elseif($_POST['type']=='t'){
 			$query2='SELECT `id` FROM `teachr`  ORDER BY `id` ASC';
@@ -147,7 +147,7 @@ if ($result=mysqli_query($con,$sql))
  		 	
   	echo'$("#mainccontent").html(myvar);';
     echo'$("#mainccontent").append("'.$_POST['type'].'"+".'.$num_rows12.'");';
-   // echo'$("#after").append(btnvar);';
+    echo'$("#after").append(btnvar);';
   
   // Fetch one and one row
   // while ($row=mysqli_fetch_row($result))
@@ -274,7 +274,7 @@ mysqli_close($con);
       			<div class="panel-body" id="mainccontent">
       				<form method="post" action="register.php?submit=true">
   					<label for="name"><h3>Name:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['name'];}?>" id="name" name="name">
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['name'];}?>" id="name" name="name" autocomplete="off">
   					<label for="acctype"><h3>Account type:</h3></label>
   					<select class="form-input" name="type" id="acctype" >
 					  <option value="default">Select Account Type</option>  
@@ -286,7 +286,7 @@ mysqli_close($con);
 					
 					<label for="studid" id="ls_uid"><h3>Enter ward's userid:</h3></label>
   					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['studid'];}?>" id="s_uid" name="studid">
-            <select class="form-control" name="batch" id="batchk" style="height:30%;">
+            <select class="form-control" name="batch" id="batchk" style="height:30%;" value="<?PHP if($_GET['submit']=='true'){echo $_POST['batch'];}?>">
               
               <?PHP 
             if ($result22=mysqli_query($con,"SELECT * FROM `abatches` "))
@@ -301,7 +301,7 @@ mysqli_close($con);
           ?>  
           </select>
 					<label for="email"><h3>email:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['email'];}?>" id="email" name="email">
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['email'];}?>" id="email" name="email" autocomplete="off"/>
   					<label for="pwd"><h3>Password:</h3></label>
   					<input type="password" class="form-input" id="pwd" name="pswd">
   					<label for="pwd"><h3>Confirm Password:</h3></label>

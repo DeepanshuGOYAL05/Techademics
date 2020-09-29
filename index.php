@@ -217,7 +217,7 @@ mysqli_close($con);
                         </div>
 
 					<div class="form-group">
-                            <input type="text" class="form-input" name="pswd" id="pwd" placeholder="Password" autocomplete="off"/>
+                            <input type="password" class="form-input" name="pswd" id="pwd" placeholder="Password" autocomplete="off"/>
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
 					<input type="submit" value="Login"  class="form-submit" style="width:90%">
