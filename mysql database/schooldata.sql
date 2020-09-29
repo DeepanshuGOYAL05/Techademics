@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 28, 2020 at 02:48 PM
+-- Generation Time: Sep 29, 2020 at 08:08 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -36,7 +36,8 @@ CREATE TABLE `abatches` (
 --
 
 INSERT INTO `abatches` (`name`) VALUES
-('btech16');
+('btech16'),
+('btech17');
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,8 @@ INSERT INTO `cnroll` (`cid`, `cname`, `tid`, `tname`, `batch`) VALUES
 (7, 'Discrete Math', 1, 0, 'btech16'),
 (9, 'Software Engineering', 1, 0, 'btech16'),
 (10, 'Algorithms', 1, 0, 'btech16'),
-(11, 'Cryptography', 1, 0, 'btech16');
+(11, 'Cryptography', 1, 0, 'btech16'),
+(12, 'Graphics', 6, 0, 'btech16');
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,8 @@ INSERT INTO `course` (`id`, `cname`, `tid`, `tname`, `nclass`) VALUES
 (7, 'Discrete Math', 1, 'Gilbert	Hanson', '2016-10-20'),
 (9, 'Software Engineering', 1, 'Gilbert	Hanson', '2017-10-10'),
 (10, 'Algorithms', 1, 'Gilbert	Hanson', '2017-01-05'),
-(11, 'Cryptography', 1, 'Gilbert	Hanson', '2017-11-10');
+(11, 'Cryptography', 1, 'Gilbert	Hanson', '2017-11-10'),
+(12, 'Graphics', 6, 'Argus Filch', '2020-10-05');
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,8 @@ CREATE TABLE `cwork` (
 
 INSERT INTO `cwork` (`id`, `cid`, `tid`, `title`, `descr`, `url`) VALUES
 (1, 10, 1, 'Intro3', NULL, 'http://youtube.com/'),
-(2, 4, 1, 'Please follow the below tutorials', NULL, 'https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI');
+(2, 4, 1, 'Please follow the below tutorials', NULL, 'https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI'),
+(6, 12, 6, 'Click on this for Graphic Tutorial', NULL, 'https://www.youtube.com/watch?v=pz-lwONtVmM');
 
 -- --------------------------------------------------------
 
@@ -189,7 +193,12 @@ INSERT INTO `days` (`id`, `date`, `type`, `descr`, `cid`, `tid`) VALUES
 (18, '2016-10-10', 4, NULL, NULL, 1),
 (19, '2017-01-10', 4, NULL, NULL, 1),
 (20, '2020-10-05', 3, NULL, 7, 1),
-(21, '2020-10-05', 3, NULL, 7, 1);
+(21, '2020-10-05', 3, NULL, 7, 1),
+(22, '2020-10-03', 4, NULL, NULL, 1),
+(24, '2020-10-07', 1, NULL, 12, 6),
+(25, '2020-10-20', 3, NULL, 12, 6),
+(26, '2020-10-02', 2, NULL, NULL, 6),
+(27, '2020-10-18', 4, NULL, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -228,7 +237,13 @@ INSERT INTO `feed` (`tid`, `id`, `tname`, `title`, `exp_date`, `batch`) VALUES
 (1, 17, 'Gilbert	Hanson', '<a href=http://youtube.com/ >Professor Gilbert	Hanson added Intro3 to the coursework on Algorithms </a>', '2016-10-06', 'btech16'),
 (1, 18, 'Gilbert	Hanson', 'There will be an Mathematics Assignment exam of 100 marks on Gilbert	Hanson on 2020-10-05 ', '2020-10-05', 'all'),
 (1, 20, 'Gilbert	Hanson', '<a href=https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI >Professor Gilbert	Hanson added Please follow the below tutorials to the coursework on AI </a>', '2020-09-30', 'btech16'),
-(1, 22, 'Gilbert	Hanson', '<a href= >Professor Gilbert	Hanson added  to the coursework on Artificial Intelligence </a>', '2020-10-01', 'btech16');
+(1, 24, 'Gilbert	Hanson', '<span class=imp>There is parent teacher meet with Prof. Gilbert	Hanson on 2020-10-03 </span>', '2020-10-03', 'all'),
+(6, 26, 'Argus Filch', 'You have been added to a new course Graphics by instructor Argus Filch', '2020-10-05', 'btech16'),
+(6, 27, 'Argus Filch', '<a href=https://www.youtube.com/watch?v=pz-lwONtVmM >Professor Argus Filch added Click on this for Graphic Tutorial to the coursework on Graphics </a>', '2020-10-04', 'btech16'),
+(6, 28, 'Argus Filch', 'There is a class by Prof. Argus Filch on 2020-10-07 ', '2020-10-07', 'btech16'),
+(6, 29, 'Argus Filch', 'There will be an Graphics Assignment exam of 100 marks on Argus Filch on 2020-10-20 ', '2020-10-20', 'all'),
+(6, 30, 'Argus Filch', '<span class=imp>2020-10-02 has been declared a holiday!</span>', '2020-10-02', 'all'),
+(6, 31, 'Argus Filch', '<span class=imp>There is parent teacher meet with Prof. Argus Filch on 2020-10-18 </span>', '2020-10-18', 'all');
 
 -- --------------------------------------------------------
 
@@ -269,8 +284,7 @@ CREATE TABLE `parent` (
 
 INSERT INTO `parent` (`id`, `pname`, `sid`, `sname`, `email`, `pwd`) VALUES
 (1, 'Parent1', 1, 'Tameesh Biswas', 'parent1@parent.com', 'pswd'),
-(2, 'parent2', 2, 'Shaurya Gupta', 'agadga@sbafg.aha', 'pswd'),
-(11, 'tamtam', 3, 'Saraansh Chopra', 'aegadgad@dbadag.adg', 'pswd');
+(2, 'parent2', 2, 'Shaurya Gupta', 'agadga@sbafg.aha', 'pswd');
 
 -- --------------------------------------------------------
 
@@ -284,7 +298,7 @@ CREATE TABLE `stud` (
   `points` int(11) NOT NULL DEFAULT 0,
   `email` varchar(200) DEFAULT NULL,
   `pwd` varchar(2000) NOT NULL,
-  `batch` varchar(20) NOT NULL DEFAULT 'btech16'
+  `batch` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -296,7 +310,8 @@ INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES
 (2, 'Shaurya Gupta', 0, 'sha@student.org', 'pswd', 'btech16'),
 (3, 'Saraansh Chopra', 0, 'saraansh@student.org', 'pswd', 'btech16'),
 (4, 'Deepanshu Goyal', 0, 'goyaldeepanshu0098@gmail.com', 'pswd', 'btech16'),
-(7, 'Test data', 0, 'testabc@gmail.com', 'pswd', 'btech16');
+(5, 'Deepanshu', 0, 'deepanshu05@gmail.com', 'psswd', 'btech16'),
+(6, 'Mukund', 0, 'mukund05@gmail.com', 'pswd', 'btech16');
 
 -- --------------------------------------------------------
 
@@ -341,7 +356,8 @@ INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES
 (2, 'Doris Wilson', 'doris01@techademics.com', 'pswd'),
 (3, 'Edna Francis', 'edna05@techademics.com', 'pswd'),
 (4, 'Irene Bell', 'irenebell@techademics.com', 'pswd'),
-(5, 'Ruth Emmons', 'ruthemmons1@techademics.com', 'pswd');
+(5, 'Ruth Emmons', 'ruthemmons1@techademics.com', 'pswd'),
+(6, 'Argus Filch', 'argusfilch@gmail.com', 'pswd');
 
 -- --------------------------------------------------------
 
@@ -365,7 +381,8 @@ CREATE TABLE `tests` (
 
 INSERT INTO `tests` (`testid`, `name`, `cid`, `date`, `tid`, `maxmarks`, `batch`) VALUES
 (1, 'Midsems', 4, '2016-10-08', 1, 100, 'btech16'),
-(2, 'Mathematics Assignment', 7, '2020-10-05', 1, 100, 'btech16');
+(2, 'Mathematics Assignment', 7, '2020-10-05', 1, 100, 'btech16'),
+(4, 'Graphics Assignment', 12, '2020-10-20', 6, 100, 'btech17');
 
 -- --------------------------------------------------------
 
@@ -473,25 +490,25 @@ ALTER TABLE `class`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `cwork`
 --
 ALTER TABLE `cwork`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `days`
 --
 ALTER TABLE `days`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `feed`
 --
 ALTER TABLE `feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `homework`
@@ -503,13 +520,13 @@ ALTER TABLE `homework`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stud`
 --
 ALTER TABLE `stud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblmessage`
@@ -521,13 +538,13 @@ ALTER TABLE `tblmessage`
 -- AUTO_INCREMENT for table `teachr`
 --
 ALTER TABLE `teachr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `testid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `testid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
