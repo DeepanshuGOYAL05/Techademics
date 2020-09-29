@@ -129,12 +129,12 @@ if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
           </li>
 
          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-            <a class="nav-link" href="../help.php">Help</a>
+		 <a class="nav-link" href="../contact.php">Contact Us</a>
           </li>
 
          
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-			<a class="nav-link" href="../contact.php">Contact</a>
+			<a class="nav-link" href="../help.php">Help</a>
 			
           </li>
         </ul>

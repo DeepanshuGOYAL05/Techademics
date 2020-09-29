@@ -244,7 +244,7 @@ mysqli_close($con);
           </li>
 
          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-            <a class="nav-link" href="../help.php">Help</a>
+		 <a class="nav-link" href="contact.php">Contact Us</a>
           </li>
 
          

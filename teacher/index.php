@@ -148,7 +148,7 @@ if(isset($_POST['cid'])){
        
          
           <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
-			<a class="nav-link" href="../help.php">Help</a>
+		  <a class="nav-link" href="../contact.php">Contact Us</a>
 			
           </li>
         </ul>

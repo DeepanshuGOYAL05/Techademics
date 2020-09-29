@@ -2,43 +2,101 @@
 <!DOCTYPE html>
 <html lang="en">	
 <head>
-	
-	<title>Contact-us</title>
+	<title>Home | Techademics</title>
+	<meta name="theme-color" content="#42bcf4">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	 <meta charset="utf-8"> 
-	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	 <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Permanent+Marker" rel="stylesheet">
-     
-
-
-
 	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---->
+<!------ Include the above in your HEAD tag ---------->
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="contact.css">
+	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="gen.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
 		@import 'https://fonts.googleapis.com/css?family=Baloo+Bhai|Roboto+Condensed';
+	die();
 	</style>
 	<script>
 	$(document).ready(function(){
+	<?PHP
+if($_GET['submit']=='true'){
+	
+	$con = mysqli_connect($servername,$username,$password,$dbname);
 
-		$("h4 a").attr('target','_blank');
-		$("#logout").click(function(){
-			window.location='logout.php';
-		});
-			$(".goto").click(function(){
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  
+$usernameo=explode('.', $_POST['userid']);
+		if($usernameo[0]=='s'){
+			$work=1;
+			//student
+			$sql = "SELECT * FROM `stud` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			//echo 'window.location="student/";});</script></head></html>'
+			// exit();
+		}elseif($usernameo[0]=='t'){
+			$work=1;
+			$sql = "SELECT * FROM `teachr` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			//redirect to teacher
+			// echo 'window.location="student/";});</script></head></html>'
+			// exit();
+		}elseif($usernameo[0]=='p'){
+			$work=1;
+			//redirect to parent
+			
+			$sql = "SELECT * FROM `parent` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			// echo 'window.location="student/";});</script></head></html>'
+			// exit();
+		} else{
+			$work=0;
+			echo'$("#error_wrap").fadeIn();';
+  			echo'$("#error").text("Invalid1");';
+		}
+
+
+	if($work==1){
+
+if ($result=mysqli_query($con,$sql))
+  { while ($row=mysqli_fetch_row($result)){$_SESSION['name']=$row[1];}
+  $num_rows = mysqli_num_rows($result);
+  if($num_rows>0){
+  	if($usernameo[0]=='s'){
+			echo 'window.location="student/";});</script></head></html>';
+			$_SESSION['usr']=$_POST['userid'];
+
+  			exit();
+		}elseif($usernameo[0]=='t'){
+			echo 'window.location="teacher/";});</script></head></html>';
+			$_SESSION['usr']=$_POST['userid'];
+  			exit();
+		}elseif($usernameo[0]=='p'){
+			echo 'window.location="parent/";});</script></head></html>';
+			$_SESSION['usr']=$_POST['userid'];
+  			exit();
+		}  else{echo'alert("unhandled exception!");';
+		}
+  	
+  }else{
+  	echo'$("#error_wrap").fadeIn();';
+  	echo'$("#error").text("Invalid");';
+  	
+  }
+
+  mysqli_free_result($result);
+}
+
+mysqli_close($con);
+	}
+}
+?>
+	
+    	$(".goto").click(function(){
     		var string = $(this).attr('data').split(',') ;
         	var type= string[0];
         	var uri= string[1];
@@ -49,117 +107,54 @@
         	}
         	
     	});
-
-		
 	});
-	</script>
-	  
-     
 	
-	  <style>
-	 .carousel-item {
-  height: 100vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-	 </style>
-	 
-	 
-	
-<style>
-ul li {list-style:none;}
-ul li a{color:black; font-weight:bold;}
-ul li a:hover{text-decoration:none;}
-</style>
-	<meta name="theme-color" content="#42bcf4">
-	
-	<!--<script>
-		$(document).ready(function(){
-			var myvar='<center><h1>Account created!</h1><h2>user ID is<br></h2></center>';
-      var btnvar ='<button type="button" class="form-submit goto" style="width:81%" data="0,index.php">Go to login page</button>';-->
-	<?PHP
-	include'gen.php';
-    $con = mysqli_connect($servername,$username,$password,$dbname);
+</script>
+</head>
 
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+<body>
+<div id="php" >
+	<?PHP
+		include('gen.php');
 	if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 	//$_SESSION['usr'];
-
-
- 
-	if(isset($message))
-	{
-		echo $name;
-		echo $msgtxt;
-		echo $email;
-		echo $phone;
-		if(mysqli_query($con,"insert into tblmessage(fld_name,fld_email,fld_phone,fld_msg) values ('$name','$email','$phone','$msgtxt')"))
-		{
-			echo "<script> alert('We will be Connecting You shortly')</script>";
+	if(!isset($_GET['submit'])){$_GET['submit']='';}
+	if(isset($_SESSION['usr'])){
+	if($_SESSION['usr']!='' || $_SESSION['usr']!=null){
+		$sessionarr=explode('.', $_SESSION['usr']);
+		if($sessionarr[0]=='s'){
+			//redirect to student
+			header("Location: student/");
+			exit();
+		}elseif($sessionarr[0]=='t'){
+			//redirect to teacher
+			header("Location: teacher/");
+			exit();
+		}elseif($sessionarr[0]=='p'){
+			//redirect to parent
+			header("Location: parent/");
+			exit();
 		}
-		else
-		{
-			echo "failed";
-		}
-   }
-   
-
-   // echo'$("#after").append(btnvar);';
-  
-  // Fetch one and one row
-  // while ($row=mysqli_fetch_row($result))
-  //   {
-
-  //       // printf ("%s",$row[0]);
-  //   }
-  // // Free result set
-  // mysqli_free_result($result);
-
-mysqli_close($con);
-  
-
-?>
 		
-</head>
-
-<body>
-
-    
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-<!--navbar ends-->
+	}
+}
+?>
+</div>
 <div class="fixed-top">
   <header class="topbar">
-  	
-		 
       <div class="container">
-	  
         <div class="row">
-		
           <!-- social icon-->
           <div class="col-sm-12">
-		  
-		<!-- <p style="color: white; margin-top:25px; float: right; font-size:20px; margin-bottom:15px; margin-right:465px;"><?PHP  echo 'Welcome, '.$fname[0];  ?></p>
---> <ul class="social-network">
-<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
+            <ul class="social-network">
+              <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
               <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
             </ul>
-		 
-			
           </div>
 
         </div>
@@ -175,66 +170,77 @@ mysqli_close($con);
 
         <ul class="navbar-nav ml-auto" style="float: right;">
 
-          
-		  <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
-            <a class="nav-link" href="index.php">Home</a>
+          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
+            <a class="nav-link" href="index.php">Home
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
+
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
             <a class="nav-link" href="about.php">About</a>
           </li>
 
          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-            <a class="nav-link" href="help.php">Help</a>
+            <a class="nav-link" href="help.php">Contact Us</a>
           </li>
 
-         
-          <li class="nav-item active" style="margin-top:10px; margin-right:10px; color:white;">
-			<a class="nav-link" href="#">Contact</a>
-			
-          </li>
+        
         </ul>
       </div>
     </div>
   </nav>
 </div>
 
-<div class="container-fluid">
-  <img src="contact.bmp" width="100%">
+
+<br><br>
+<div class="container-fluid" style="background:black; opacity:0.60;">
+<h1 style="color:white; text-align:center; text-transform:uppercase;">Contact Us at:</h1>
+
+<p style="color:white; text-align:center; font-size:25px;"> </p>
 </div>
 <br>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8" style="padding:20px; border:1px solid #F0F0F0;">
-	    <form method="post">
-            <div class="form-group">
-                 <input type="text" class="form-control"  placeholder="Name*" name="name" required/>
-            </div>
-			<div class="form-group">
-                 <input type="email" class="form-control"  placeholder="email*"  name="email" required/>
-            </div>
-			<div class="form-group">
-                 <input type="tel" class="form-control" pattern="[6-9]{1}[0-9]{9}"  name="phone" placeholder="Phone(optinal) EX 9213298761"/>
-			</div>
-			
-			<div class="form-group">
-                <textarea class="form-control"    placeholder="Message*" name="msgtxt" rows="3" col="10" required/></textarea/>
-            </div>
-			<div class="form-group">
-                   <button type="submit" name="message" class="btn btn-danger">Send Message</button>
-            </div>
-        </form>
-	</div>
-    <div class="col-sm-4" style="padding:30px;">
-	   <div class="form-group">
-	    Contact:<br>
-           <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<b>+91-7988587806/8198952284</b><br><br>
-			<i class="fa fa-home" aria-hidden="true"></i>&nbsp; Old Railway Road, Mohindergarh<br>
-	       
-	   </div>
-	</div>
-  </div>
+<div class="row">
+<div class="col-md-6">
+<div class="container-fluid" style="background:white; opacity:0.60;">
+<center>
+<i class="material-icons" style="font-size:100px; ">email</i>
+<h2>Queries</h2>
+   <a href="mailto:educationtechademics@gmail.com" target="_blank"> <h2>educationtechademics@gmail.com</h2></a>
+</center>
 </div>
-<br><br>
- 
-	</body>
+</div>
+<div class="col-md-6">
+<div class="container-fluid" style="background:white; opacity:0.60;">
+<center>
+<i class="material-icons" style="font-size:100px;">call</i>
+<h2>Techademics Mon-Sat</h2>
+<h2>+91-7988587806</h2>
+</center>
+
+</div>
+
+</div>
+</div>
+<br>
+    <div class="container">
+     <div class="row">
+      <div class="col-md-12">
+	  
+       <center>
+	   <div class="container-fluid" style="background:black; opacity:0.60; width: 50%;">
+	   <h2 style="color:white; text-align:center; text-transform:uppercase; ">Admin </h2>
+	   <i class="material-icons" style="font-size:100px; color: white;" >email</i>
+       
+   <a href="mailto:educationtechademics@gmail.com" target="_blank"> <h2 style="color:white">admin@techademics.com</h2></a>
+	   </center>
+	   </div>
+	   </div>
+	   </div>
+	   </div>
+          <br><br>
+          <br><br>
+	<!-- Footer -->
+
+</body>
 </html>

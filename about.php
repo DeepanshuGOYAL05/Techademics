@@ -161,7 +161,7 @@ mysqli_close($con);
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" >
     <div class="container" >
-      <a class="navbar-brand" href="index.html" style="text-transform: uppercase; font-size:35px;  "> Techademics</a>
+      <a class="navbar-brand" href="index.php" style="text-transform: uppercase; font-size:35px;  "> Techademics</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -176,11 +176,11 @@ mysqli_close($con);
           </li>
 
           <li class="nav-item active" style="margin-top:10px; margin-right:10px;" >
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="about.php">About</a>
           </li>
 
          <li class="nav-item active" style="margin-top:10px; margin-right:10px;">
-            <a class="nav-link" href="#">Help</a>
+		 <a class="nav-link" href="contact.php">Contact Us</a>
           </li>
 
         
@@ -199,12 +199,12 @@ mysqli_close($con);
 
 <p style="color:white; text-align:center; font-size:25px;">Our school's mission is to learn leadership, the common core, and relationships for life. Our mission is to provide a safe, disciplined learning environment that empowers all students to develop their full potential. We feel strongly about helping to build leaders that have the ability to succeed in whatever endeavor they undertake. Winning is not always the measure of success. Our students understand the "Win, win" philosophy and use it in their daily life. Common standards keeps us
  focused on learning appropriate content and preparing our students to graduate. Last but just as importantly, setting examples for our students of meaningful and lasting relationships will go with them throughout their lifetime.</p>
-<!--<h3 style="color:white; text-align:center; text-transform:uppercase;">Helping people discover great places around them.</h3>
-<h3 style="color:white; text-align:center; text-transform:uppercase;">Building amazing experiences around dining.</h3>
-<p style="color:white; text-align:center; font-size:25px;">Starting with information for over 1 million restaurants (and counting) globally, we're making dining smoother and more enjoyable with services like online ordering and table reservations.</p>
--->
-
-<p style="color:white; text-align:center; font-size:25px;">Our school's mission is to learn leadership, the common core, and relationships for life. Our mission is to provide a safe, disciplined learning environment that empowers all students to develop their full potential. We feel strongly about helping to build leaders that have the ability to succeed in whatever endeavor they undertake. Winning is not always the measure of success. Our students understand the "Win, win" philosophy and use it in their daily life. Common standards keeps us focused on learning appropriate content and preparing our students to graduate. Last but just as importantly, setting examples for our students of meaningful and lasting relationships will go with them throughout their lifetime.</p>
+<h1 style="color:white; text-align:center; text-transform:uppercase;">Our Reach</h1>
+<p style="color:white; text-align:center; font-size:25px;">
+The people who visit Education.com are the most important part of what we do.
+We provide learning resources in over 20 countries and six continents.
+Every user is different, but they share the same goal: to improve the lives of children through education.
+</p>
 </div>
 
 <br><br>
