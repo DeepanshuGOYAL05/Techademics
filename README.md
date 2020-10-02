@@ -1,5 +1,5 @@
 # Techademics : An Online Interaction Portal for Teachers &amp; Students.
- # Techademics
+
 A web application for scheduling, organising and managing channels of communication in an educational Institution.
 
 1. This Platform is intended to serve as an efficient network of communication between
