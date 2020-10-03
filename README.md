@@ -24,5 +24,5 @@ A Form to collect Data so that teacher can be in touch with students
 
 (# = Pending feature)
 
-Live version on: 
+Live version on: http://techademics.infinityfreeapp.com
 Use username s.1 for Student and t.1 for teacher
