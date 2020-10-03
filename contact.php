@@ -115,31 +115,31 @@ mysqli_close($con);
 <body>
 <div id="php" >
 	<?PHP
-		include('gen.php');
-	if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-	//$_SESSION['usr'];
-	if(!isset($_GET['submit'])){$_GET['submit']='';}
-	if(isset($_SESSION['usr'])){
-	if($_SESSION['usr']!='' || $_SESSION['usr']!=null){
-		$sessionarr=explode('.', $_SESSION['usr']);
-		if($sessionarr[0]=='s'){
-			//redirect to student
-			header("Location: student/");
-			exit();
-		}elseif($sessionarr[0]=='t'){
-			//redirect to teacher
-			header("Location: teacher/");
-			exit();
-		}elseif($sessionarr[0]=='p'){
-			//redirect to parent
-			header("Location: parent/");
-			exit();
-		}
+// 		include('gen.php');
+// 	if (session_status() == PHP_SESSION_NONE) {
+//     session_start();
+// }
+// 	//$_SESSION['usr'];
+// 	if(!isset($_GET['submit'])){$_GET['submit']='';}
+// 	if(isset($_SESSION['usr'])){
+// 	if($_SESSION['usr']!='' || $_SESSION['usr']!=null){
+// 		$sessionarr=explode('.', $_SESSION['usr']);
+// 		if($sessionarr[0]=='s'){
+// 			//redirect to student
+// 			header("Location: student/");
+// 			exit();
+// 		}elseif($sessionarr[0]=='t'){
+// 			//redirect to teacher
+// 			header("Location: teacher/");
+// 			exit();
+// 		}elseif($sessionarr[0]=='p'){
+// 			//redirect to parent
+// 			header("Location: parent/");
+// 			exit();
+// 		}
 		
-	}
-}
+// 	}
+// }
 ?>
 </div>
 <div class="fixed-top">
