@@ -342,8 +342,8 @@ if(isset($_POST['cid'])){
 
   			 			}echo '</select>';}
   			 }
-					?>
-						<label for="maxmarks"><h3>Max marks:</h3></label>
+					?>						
+					    <label for="maxmarks"><h3>Max marks:</h3></label>
   						<input type="text" style="width:80%" class="form-control" name="maxmarks" id="maxmarks"  autocomplete="off">
   						<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
   						<input type="text" style="width:80%" class="form-control" name="aadate" id="aadate"  autocomplete="off">
