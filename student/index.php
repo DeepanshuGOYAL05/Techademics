@@ -190,5 +190,40 @@ if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
 			<div class="col-sm-12"></div>
 		</div>
 	</center></div>
+	<div class="displayAttendance">
+	<h1>Attendance</h1>
+	<p>Total Attended Classes : 
+	<?php
+		
+		$sid=$_SESSION["usr"];
+		$sql='SELECT cid,date,value FROM attend WHERE sid="'.$sid.'"';
+		$result = mysqli_query($con, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+	//output data of each row
+	echo"
+	<table style='width:50%'>
+  <tr>
+    <th>Course</th>
+    <th>Date</th>
+    <th>Status</th>
+  </tr>";
+  
+  while($row = mysqli_fetch_assoc($result)) {
+		echo "<tr>
+    <td>".$row["cid"]."</td>
+    <td>".$row["date"]."</td>
+    <td>".$row["value"]."</td>
+  </tr>";
+	}
+	echo "</table>";
+} else {
+  echo "0 results";
+}
+
+mysqli_close($con);
+?>
+	</p>
+	</div>
 </body>
 </html>
