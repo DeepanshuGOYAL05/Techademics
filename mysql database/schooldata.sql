@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 08:08 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Generation Time: Oct 05, 2020 at 07:10 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,12 +46,19 @@ INSERT INTO `abatches` (`name`) VALUES
 --
 
 CREATE TABLE `attend` (
-  `cid` int(11) NOT NULL,
+  `cid` varchar(4) NOT NULL,
   `date` date NOT NULL,
-  `sid` int(11) NOT NULL,
-  `tid` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `sid` varchar(4) NOT NULL,
+  `tid` varchar(4) NOT NULL,
+  `value` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attend`
+--
+
+INSERT INTO `attend` (`cid`, `date`, `sid`, `tid`, `value`) VALUES
+('c.1', '2020-10-05', 's.7', 't.8', 'present');
 
 -- --------------------------------------------------------
 
@@ -311,7 +318,8 @@ INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES
 (3, 'Saraansh Chopra', 0, 'saraansh@student.org', 'pswd', 'btech16'),
 (4, 'Deepanshu Goyal', 0, 'goyaldeepanshu0098@gmail.com', 'pswd', 'btech16'),
 (5, 'Deepanshu', 0, 'deepanshu05@gmail.com', 'psswd', 'btech16'),
-(6, 'Mukund', 0, 'mukund05@gmail.com', 'pswd', 'btech16');
+(6, 'Mukund', 0, 'mukund05@gmail.com', 'pswd', 'btech16'),
+(7, 'Kevin', 0, 'mathewthomaskevin@gmail.com', '@Kevcool77', 'btech16');
 
 -- --------------------------------------------------------
 
@@ -357,7 +365,9 @@ INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES
 (3, 'Edna Francis', 'edna05@techademics.com', 'pswd'),
 (4, 'Irene Bell', 'irenebell@techademics.com', 'pswd'),
 (5, 'Ruth Emmons', 'ruthemmons1@techademics.com', 'pswd'),
-(6, 'Argus Filch', 'argusfilch@gmail.com', 'pswd');
+(6, 'Argus Filch', 'argusfilch@gmail.com', 'pswd'),
+(7, 'Mathew', 'test@gmail.com', '@Kevcool77'),
+(8, 'teacher', 'teacher@gmail.com', '@Kevcool77');
 
 -- --------------------------------------------------------
 
@@ -402,6 +412,12 @@ CREATE TABLE `tscores` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `attend`
+--
+ALTER TABLE `attend`
+  ADD PRIMARY KEY (`cid`,`date`,`sid`);
 
 --
 -- Indexes for table `class`
@@ -526,7 +542,7 @@ ALTER TABLE `parent`
 -- AUTO_INCREMENT for table `stud`
 --
 ALTER TABLE `stud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tblmessage`
@@ -538,7 +554,7 @@ ALTER TABLE `tblmessage`
 -- AUTO_INCREMENT for table `teachr`
 --
 ALTER TABLE `teachr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tests`

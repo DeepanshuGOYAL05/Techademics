@@ -187,10 +187,8 @@ if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12"></div>
-		</div>
-	</center></div>
-	<div class="displayAttendance">
+			<div class="col-sm-12">
+			<div class="displayAttendance" style="background:white; padding:50px;">
 	<h1>Attendance</h1>
 	<p>Total Attended Classes : 
 	<?php
@@ -224,6 +222,9 @@ if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
 mysqli_close($con);
 ?>
 	</p>
-	</div>
+	</div></div>
+		</div>
+	</center></div>
+	
 </body>
 </html>

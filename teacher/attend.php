@@ -25,8 +25,11 @@ if($_POST["submit"])
 
     if (mysqli_query($con, $sql)) {
         echo "New record created successfully";
+        $_SESSION["success"]=1;
+        header("Location:index.php");
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $_SESSION["success"]=0;
+        header("Location:index.php");
     }
     
     mysqli_close($conn);
@@ -34,18 +37,7 @@ if($_POST["submit"])
 ?>
 <html>
     <body>
-        <form method="POST">
-        <label>Course ID</label>
-            <input type="text" id="cid" name="cid">
-            <label>Student ID</label>
-            <input type="text" id="sid" name="sid">
-            <label>Status</label>
-            <select name="value" id="value">
-                <option value="present">Present</option>
-                <option value="absent">Absent</option>
-            </select>
-            <input id="submit" name="submit" type="submit">
-        </form>
+       
     </body>
     <script>
     // if ( window.history.replaceState ) {
