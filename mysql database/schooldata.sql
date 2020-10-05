@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2020 at 07:10 AM
+-- Generation Time: Oct 05, 2020 at 07:30 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -58,7 +58,13 @@ CREATE TABLE `attend` (
 --
 
 INSERT INTO `attend` (`cid`, `date`, `sid`, `tid`, `value`) VALUES
-('c.1', '2020-10-05', 's.7', 't.8', 'present');
+('c.1', '2020-10-05', 's.1', 't.8', 'present'),
+('c.1', '2020-10-05', 's.7', 't.8', 'present'),
+('c.2', '2020-10-05', 's.1', 't.8', 'present'),
+('c.2', '2020-10-05', 'S.3', 't.8', 'present'),
+('c.2', '2020-10-05', 's.7', 't.8', 'present'),
+('c.3', '2020-10-05', 's.7', 't.8', 'absent'),
+('c.3', '2020-10-05', 's.8', 't.8', 'absent');
 
 -- --------------------------------------------------------
 
@@ -319,7 +325,7 @@ INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES
 (4, 'Deepanshu Goyal', 0, 'goyaldeepanshu0098@gmail.com', 'pswd', 'btech16'),
 (5, 'Deepanshu', 0, 'deepanshu05@gmail.com', 'psswd', 'btech16'),
 (6, 'Mukund', 0, 'mukund05@gmail.com', 'pswd', 'btech16'),
-(7, 'Kevin', 0, 'mathewthomaskevin@gmail.com', '@Kevcool77', 'btech16');
+(7, 'Kevin', 0, 'mathewthomaskevin@gmail.com', '@Test123', 'btech16');
 
 -- --------------------------------------------------------
 
@@ -366,8 +372,8 @@ INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES
 (4, 'Irene Bell', 'irenebell@techademics.com', 'pswd'),
 (5, 'Ruth Emmons', 'ruthemmons1@techademics.com', 'pswd'),
 (6, 'Argus Filch', 'argusfilch@gmail.com', 'pswd'),
-(7, 'Mathew', 'test@gmail.com', '@Kevcool77'),
-(8, 'teacher', 'teacher@gmail.com', '@Kevcool77');
+(7, 'Mathew', 'test@gmail.com', '@Test123'),
+(8, 'teacher', 'teacher@gmail.com', '@Test123');
 
 -- --------------------------------------------------------
 
