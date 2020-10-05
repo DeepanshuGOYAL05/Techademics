@@ -7,6 +7,8 @@
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -550,3 +552,10 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*Reset the autoincremented value, and then count every row while a new value is created for it.*/;
+SET @number := 0;
+UPDATE your_table SET id = @number := (@number+1);
+ALTER TABLE tableName AUTO_INCREMENT = 1;
+
+
