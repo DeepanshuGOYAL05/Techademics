@@ -402,7 +402,33 @@ if(isset($_POST['cid'])){
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12"></div>
+			<div class="col-sm-12">
+			<h1>Add Attendance</h1>
+			<br>
+			<form method="POST" action="attend.php">
+        <label>Course ID</label>
+            <input type="text" id="cid" name="cid">
+            <label>Student ID</label>
+            <input type="text" id="sid" name="sid">
+            <label>Status</label>
+            <select name="value" id="value">
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+            </select>
+            <input id="submit" name="submit" type="submit">
+        </form>
+				<div class="alert">
+				<?php
+					if($_SESSION["success"])
+					{
+						echo "<div style='background:green;'>success</div>";
+					}
+					else{
+						echo "<div style='background:red;'>failed Entry</div>";
+					}
+				?>
+				</div>
+			</div>
 		</div>
 	</center></div>
 </body>
