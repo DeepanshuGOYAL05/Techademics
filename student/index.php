@@ -1,4 +1,36 @@
+<?PHP
+if (session_status() === PHP_SESSION_NONE) session_start();
+include ('../gen.php');
+$userarr = [];
+if(!isset($_SESSION['usr'])){
+    $userarr=explode('.',$_SESSION['usr']);
+    header("Location: ../index.php");
+    die();
+}
+$con = mysqli_connect($servername,$username,$password,$dbname);
 
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
+{
+    $num_rows11 = mysqli_num_rows($result2);
+
+    // Fetch one and one row
+    while ($rowe=mysqli_fetch_row($result2))
+    {
+
+        $sname=$rowe[1];
+        $batch=$rowe[5];
+    }
+    $fname=explode(' ', $sname);  ////////first name////////////
+    // Free result set
+    // mysqli_free_result($result2);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">	
 <head>
@@ -44,43 +76,7 @@
 
 <body>
 <div id="php" >
-<?PHP
-if (session_status() === PHP_SESSION_NONE) session_start();
-include ('../gen.php');
-if(isset($_SESSION['usr'])){
-	$userarr=explode('.',$_SESSION['usr']);
-	if($userarr[0]!='s'){
-	header("Location: ../index.php");
-	die();}
-	}else{
-	$userarr=explode('.',$_SESSION['usr']);
-header("Location: ../index.php");
-die();
-}
-$con = mysqli_connect($servername,$username,$password,$dbname);
 
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-if ($result2=mysqli_query($con,"SELECT * FROM `stud` where `id`=".$userarr[1]))
-  					{
- 		 	$num_rows11 = mysqli_num_rows($result2);
-  			
- 			 // Fetch one and one row
-  				 while ($rowe=mysqli_fetch_row($result2))
-  			 {
-
- 		       $sname=$rowe[1];
- 		       $batch=$rowe[5];
-  			 }
-  			 $fname=explode(' ', $sname);  ////////first name////////////
-  			 // Free result set
-  			// mysqli_free_result($result2);
-}
-
-
-?>
 </div>
 
 <div class="fixed-top">
