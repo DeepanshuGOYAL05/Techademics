@@ -227,182 +227,242 @@ if(isset($_POST['cid'])){
 		}
 		 ?>
 		<div class="bgvd inner">
-		<div class="row">
-			<div class="col-sm-12"><br><br>
-			<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#newBatch" style="width:90%" >Create a new batch</button>
-				
-				<div id="newBatch" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=newBatch">
-  						<label for="usr"><h3>Name of batch:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="batchname" id="batchname"  autocomplete="off">
-						  <br>
-  					<input type="submit" value="Create!"  class="btn btn-success" style="width:80%">	
-  					</form>	
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#newBatch" href="#">Create Batch</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="newBatch" class="card-body collapse">
+							<div class="form-group">
+								<form method="post" action="index.php?action=newBatch">
+									<label for="usr"><h3>Name of batch:</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="batchname" id="batchname"  autocomplete="off">
+									<br>
+									<input type="submit" value="Create!"  class="btn btn-success" style="width:80%">	
+								</form>	
+							</div>
+						</div>
 					</div>
-				</div><br><br>
-				<button type="button" class="btn btn-warning goto" style="width:90%" data="1,newCourse.php">Create new course</button><br><br>
-				
-				<button type="button" class="btn btn-success" style="width:90%" data-toggle="collapse" data-target="#cwork">Upload Coursework</button><br>
-				<div id="cwork" class="collapse">
-					<div class="form-group">
-					<form method="post" action="addcw.php">
-  						<label for="usr" ><h3>Select course:</h3></label>
-						  <br>
-  						<?PHP 
-						if ($result221=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
-  					{
- 		 	if(mysqli_num_rows($result221)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
-  				 		while ($rowewe1=mysqli_fetch_row($result221))
-  			 			{
- 		       				printf("<option value='%s'>%s</option>",$rowewe1[0],$rowewe1[1]);
-
-  			 			}echo '</select>';}
-  			 }
-					?>
-					<br><label for="usr"><h3>Title:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="title" id="title"  autocomplete="off">
-  						<label for="usr"><h3>url:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="url" id="url"  autocomplete="off"><br>	
-  					<input type="submit" value="Update!"  class="btn btn-success" style="width:80%">	
-  					</form>	
-					</div>
-				</div><br><hr class="hr1"><br>
-				<button type="button" class="btn btn-info" style="width:90%" data-toggle="collapse" data-target="#viewC">View courses</button><br><br><!-- Add students option in this plus create new course -->
-				<div id="viewC" class="collapse">
-					<ul>
-					<?PHP 
-						if ($result24=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
-  					{
- 		 				
-  				 		while ($rowewe4=mysqli_fetch_row($result24))
-  			 			{
-
- 		       				echo '<li>'.$rowewe4[1].'</li>';
-
-  			 			}
-  			 }
-					?>
-					
-					</ul>
 				</div>
-				<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#addClass" style="width:90%" >Schedule a class</button>
-				<div id="addClass" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=addClass">
-						<label for="hdate"><h3>Course:</h3></label>
-  						<?PHP 
-						if ($result22=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
-  					{
- 		 	if(mysqli_num_rows($result22)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
-  				 		while ($rowewe=mysqli_fetch_row($result22))
-  			 			{
- 		       				printf("<option value='%s'>%s</option>",$rowewe[0],$rowewe[1]);
-
-  			 			}echo '</select>';}
-  			 }
-					?>
-  						<label for="cdate"><h3>Date(YYYY-MM-DD):</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="cdate" id="cdate"  autocomplete="off">
-						  <br>
-  					<input type="submit" value="Add a class!"  class="btn btn-success" style="width:80%">	
-  					</form>	
+				<!-- <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#newBatch" style="width:90%" >Create a new batch</button> -->
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-light mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" href="newCourse.php">Create Course</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
 					</div>
-				</div><br><br>
-				<button type="button" class="btn btn-info goto" style="width:90%" data="1,https://docs.google.com/forms/d/18bLy5n8Hk3VJjNzE7GZAVL5DhfFXynbC85T4ajS_pY4/edit?usp=sharing">Schedule a Quiz</button><br><br>
-				
+				</div>
+				<!-- <button type="button" class="btn btn-warning goto" style="width:90%" data="1,newCourse.php">Create new course</button><br><br> -->
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-warning mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#cwork" href="#">Upload Coursework</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="cwork" class="collapse card-body">
+							<div class="form-group">
+								<form method="post" action="addcw.php">
+									<label for="usr" ><h3>Select course:</h3></label>
+									<?PHP 
+										if ($result221=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1])){
+											if(mysqli_num_rows($result221)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
+												while ($rowewe1=mysqli_fetch_row($result221))
+												{
+													printf("<option value='%s'>%s</option>",$rowewe1[0],$rowewe1[1]);
+												}echo '</select>';}
+										}
+									?>
+									<!-- <br> -->
+									<label for="usr"><h3>Title:</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="title" id="title"  autocomplete="off">
+									<label for="usr"><h3>url:</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="url" id="url"  autocomplete="off"><br>	
+									<input type="submit" value="Update!"  class="btn btn-success" style="width:80%">	
+								</form>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <button type="button" class="btn btn-success" style="width:90%" data-toggle="collapse" data-target="#cwork">Upload Coursework</button><br> -->
 				<hr class="hr1"><br>
-				<button type="button" class="btn btn-success " style="width:90%" data-toggle="collapse" data-target="#addAssign">Add an assessment</button>
-				
-				<div id="addAssign" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=addAssign">
-  						<label for="aaname"><h3>Name of assessment:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="aaname" id="aaname"  autocomplete="off">
-  						<label for="hdate"><h3>Course:</h3></label>
-  						<?PHP 
-						if ($result22=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
-  					{
- 		 	if(mysqli_num_rows($result22)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
-  				 		while ($rowewe=mysqli_fetch_row($result22))
-  			 			{
- 		       				printf("<option value='%s'>%s</option>",$rowewe[0],$rowewe[1]);
-
-  			 			}echo '</select>';}
-  			 }
-					?>
-  						<label for="abatch"><h3>Name of batch:</h3></label>
-							<?PHP 
-						if ($result223=mysqli_query($con,"SELECT * FROM `abatches` "))
-  					{
- 		 	if(mysqli_num_rows($result223)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="abatch">';
-  				 		while ($roweweee=mysqli_fetch_row($result223))
-  			 			{
- 		       				printf("<option value='%s'>%s</option>",$roweweee[0],$roweweee[0]);
-
-  			 			}echo '</select>';}
-  			 }
-					?>						
-					    <label for="maxmarks"><h3>Max marks:</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="maxmarks" id="maxmarks"  autocomplete="off">
-  						<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="aadate" id="aadate"  autocomplete="off">
-						  <br>
-  					<input type="submit" value="Add!"  class="btn btn-success" style="width:80%">	
-  					</form>	
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#viewC" href="#">View courses</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="viewC" class="collapse card-body">
+							<ul>
+								<?PHP 
+									if ($result24=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1])) {
+										while ($rowewe4=mysqli_fetch_row($result24)) {
+											echo '<li> - '.$rowewe4[1].'</li>';
+										}
+									}
+								?>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<br><br><!-- notify for dates from here -->
-				<button type="button" class="btn btn-info " style="width:90%" data-toggle="collapse" data-target="#viewAssign">View assessments</button><br><br>
-				<div id="viewAssign" class="collapse">
-					<ul>
-					<?PHP 
-						if ($result214=mysqli_query($con,"SELECT * FROM `tests` where `tid`=".$userarr[1]))
-  					{
- 		 				
-  				 		while ($rowewe4l=mysqli_fetch_row($result214))
-  			 			{
+				<!-- <button type="button" class="btn btn-info" style="width:90%" data-toggle="collapse" data-target="#viewC">View courses</button><br><br>Add students option in this plus create new course -->
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-light mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#addClass" href="#">Schedule Class</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="addClass" class="collapse card-body">
+							<div class="form-group">
+								<form method="post" action="index.php?action=addClass">
+									<label for="hdate"><h3>Course:</h3></label>
+										<?PHP 
+											if ($result22=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
+											{
+												if(mysqli_num_rows($result22)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
+													while ($rowewe=mysqli_fetch_row($result22))
+													{
+														printf("<option value='%s'>%s</option>",$rowewe[0],$rowewe[1]);
+													}echo '</select>';}
+											}
+										?>
+									<label for="cdate"><h3>Date(YYYY-MM-DD):</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="cdate" id="cdate"  autocomplete="off">
+									<input type="submit" value="Add a class!"  class="btn btn-success" style="width:80%">	
+								</form>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#addClass" style="width:90%" >Schedule a class</button> -->
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-warning mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text"  target="_blank" href="https://docs.google.com/forms/d/18bLy5n8Hk3VJjNzE7GZAVL5DhfFXynbC85T4ajS_pY4/edit?usp=sharing">Schedule Quiz</a>
+						</div>
+					</div>
+				</div>
 
- 		       				echo '<li>'.$rowewe4l[1].'</li>';
-
-  			 			}
-  			 }
-					?>
+				<!-- <button type="button" class="btn btn-info goto" style="width:90%" data="1,https://docs.google.com/forms/d/18bLy5n8Hk3VJjNzE7GZAVL5DhfFXynbC85T4ajS_pY4/edit?usp=sharing">Schedule a Quiz</button> -->
 					
-					</ul>
-				</div><!-- add marks here -->
+					<hr class="hr1"><br>
+					<div class="col-md-4 col-sm-12">
+						<div class="card text-white bg-info mb-3" style="max-width: 30rem;">
+							<div class="card-header">
+								<a type="button" class="card-text" data-toggle="collapse" data-target="#addAssign" href="#">Add Assessment</a>
+								<!-- <span class="glyphicon glyphicon-plus"></span> -->
+							</div>
+							<div id="addAssign" class="collapse card-body">
+						<div class="form-group">
+						<form method="post" action="index.php?action=addAssign">
+							<label for="aaname"><h3>Name of assessment:</h3></label>
+							<input type="text" style="width:80%" class="form-control" name="aaname" id="aaname"  autocomplete="off">
+							<label for="hdate"><h3>Course:</h3></label>
+							<?PHP 
+							if ($result22=mysqli_query($con,"SELECT * FROM `course` where `tid`=".$userarr[1]))
+						{
+				if(mysqli_num_rows($result22)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="cid">';
+							while ($rowewe=mysqli_fetch_row($result22))
+							{
+								printf("<option value='%s'>%s</option>",$rowewe[0],$rowewe[1]);
+
+							}echo '</select>';}
+				}
+						?>
+							<label for="abatch"><h3>Name of batch:</h3></label>
+								<?PHP 
+							if ($result223=mysqli_query($con,"SELECT * FROM `abatches` "))
+						{
+				if(mysqli_num_rows($result223)>0){ echo '<select style="width:80%; height: 60%;" class="form-control" name="abatch">';
+							while ($roweweee=mysqli_fetch_row($result223))
+							{
+								printf("<option value='%s'>%s</option>",$roweweee[0],$roweweee[0]);
+
+							}echo '</select>';}
+				}
+						?>						
+							<label for="maxmarks"><h3>Max marks:</h3></label>
+							<input type="text" style="width:80%" class="form-control" name="maxmarks" id="maxmarks"  autocomplete="off">
+							<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
+							<input type="text" style="width:80%" class="form-control" name="aadate" id="aadate"  autocomplete="off">
+							<br>
+						<input type="submit" value="Add!"  class="btn btn-success" style="width:80%">	
+						</form>	
+						</div>
+					</div>
+						</div>
+					</div>
+					<!-- <button type="button" class="btn btn-success " style="width:90%" data-toggle="collapse" data-target="#addAssign">Add an assessment</button> -->
+					<!-- notify for dates from here -->
+					<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-light mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse"data-target="#viewAssign" href="#">View assessments</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="viewAssign" class="collapse card-body">
+						<ul>
+						<?PHP 
+							if ($result214=mysqli_query($con,"SELECT * FROM `tests` where `tid`=".$userarr[1]))
+						{
+							
+							while ($rowewe4l=mysqli_fetch_row($result214))
+							{
+
+								echo '<li> - '.$rowewe4l[1].'</li>';
+
+							}
+				}
+						?>
+						
+						</ul>
+					</div><!-- add marks here -->
+					</div>
+				</div>
+				<!-- <button type="button" class="btn btn-info " style="width:90%" data-toggle="collapse" data-target="#viewAssign">View assessments</button><br><br> -->
 				<hr class="hr1"><br>
 				<!-- <button type="button" class="btn btn-success nowr" style="width:90%" data="1,attend.php">	Add a project</button><br><br> -->
-				
-				
-				<button type="button" class="btn btn-warning" style="width:90%"  data-toggle="collapse" data-target="#holiday">Declare a holiday</button><br>
-				<div id="holiday" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=holiday">
-  						<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="hdate" id="hdate"  autocomplete="off">
-						  <br>
-  					<input type="submit" value="Declare a holiday!"  class="btn btn-success" style="width:80%">	
-  					</form>	
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-warning mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#holiday" href="#">Declare a holiday</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="holiday" class="collapse card-body">
+							<div class="form-group">
+								<form method="post" action="index.php?action=holiday">
+									<label for="hdate"><h3>Date(YYYY-MM-DD):</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="hdate" id="hdate"  autocomplete="off">
+									<br>
+									<input type="submit" value="Declare a holiday!"  class="btn btn-success" style="width:80%">	
+								</form>	
+							</div>
+						</div>
 					</div>
 				</div>
-				<br>
-				<button type="button" class="btn btn-danger" style="width:90%" data-toggle="collapse" id="ptabtn" data-target="#pta">Call for a PTM</button><br><br>
-				<div id="pta" class="collapse">
-					<div class="form-group">
-					<form method="post" action="index.php?action=ptm">
-  						<label for="pdate"><h3>Date(YYYY-MM-DD):</h3></label>
-  						<input type="text" style="width:80%" class="form-control" name="pdate" id="pdate"  autocomplete="off">
-						  <br>
-  					<input type="submit" value="Notify!"  class="btn btn-danger" style="width:80%">	
-  					</form>	
+				<!-- <button type="button" class="btn btn-warning" style="width:90%"  data-toggle="collapse" data-target="#holiday">Declare a holiday</button><br> -->
+				<div class="col-md-4 col-sm-12">
+					<div class="card text-white bg-danger mb-3" style="max-width: 30rem;">
+						<div class="card-header">
+							<a type="button" class="card-text" data-toggle="collapse" data-target="#pta" href="#">Call for a PTM</a>
+							<!-- <span class="glyphicon glyphicon-plus"></span> -->
+						</div>
+						<div id="pta" class="collapse card-body">
+							<div class="form-group">
+								<form method="post" action="index.php?action=ptm">
+									<label for="pdate"><h3>Date(YYYY-MM-DD):</h3></label>
+									<input type="text" style="width:80%" class="form-control" name="pdate" id="pdate"  autocomplete="off">
+									<br>
+									<input type="submit" value="Notify!"  class="btn btn-danger" style="width:80%">	
+								</form>	
+							</div>
+					</div>
 					</div>
 				</div>
-				
+				<!-- <button type="button" class="btn btn-danger" style="width:90%" data-toggle="collapse" id="ptabtn" data-target="#pta">Call for a PTM</button><br><br> -->			
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12"></div>
 		</div>
 	</center></div>
 </body>

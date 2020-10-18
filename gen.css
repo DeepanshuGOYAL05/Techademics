@@ -64,7 +64,7 @@ color: #ffffff;
 .hr1{
 	color: #f00;
 	background-color: #f00;
-	width:80%;
+	width:92%;
 }
 .imp{
 	color:#f44242;
@@ -457,4 +457,14 @@ color: #ffffff;
 			padding:30px 0px;
 			
 		  }
-		
+
+.bgvd .card {
+	-webkit-box-shadow:  5px 5px 5px black;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow:     5px 5px 5px black;  /* Firefox 3.5 - 3.6 */
+	box-shadow:        5px 5px 5px black;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.bgvd .card-header{
+	padding-top: 1.75rem;
+	padding-bottom: 1.75rem;
+}
