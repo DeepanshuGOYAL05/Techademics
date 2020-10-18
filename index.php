@@ -202,25 +202,24 @@ mysqli_close($con);
       			<div class="panel-heading" id="error"></div>
      
 			</div>
-		<div class="main">
-
-<section class="signup">
+		</div>
+<div class="main">
+	<section class="signup">
 	<!-- <img src="images/signup-bg.jpg" alt=""> -->
 	<div class="container">
 		<div class="signup-content">
-		
+		<h1 class="form-title">Login</h1>
 		<form method="POST" action="index.php?submit=true">
-		<h2 class="form-title">Login</h2>
 					<div class="form-group">
 				<!--	<label for="usr"><h3>User Id:</h3></label>-->
-                            <input type="text" class="form-input" name="userid" id="usr" placeholder="User id" autocomplete="off"/>
-                        </div>
+                        <input type="text" class="form-input" name="userid" id="usr" placeholder="User id" autocomplete="off"/>
+                    </div>
 
 					<div class="form-group">
                             <input type="password" class="form-input" name="pswd" id="pwd" placeholder="Password" autocomplete="off"/>
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
-					<input type="submit" value="Login"  class="form-submit" style="width:90%">
+					<input type="submit" value="Login"  class="form-submit">
 		
 				</form>
 				<p class="loginhere">Not registered yet? <a href="register.php" class="loginhere-link">Register here</a>
@@ -234,7 +233,7 @@ mysqli_close($con);
       		
    
 		
-		</div>
+	</div>
 
 	
 </body>
