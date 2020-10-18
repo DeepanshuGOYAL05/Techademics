@@ -22,7 +22,21 @@ Notify PTMs.
 News feed shows all upcoming events and automatically removes expired events.
 A Form to collect Data so that teacher can be in touch with students
 
-(# = Pending feature)
+(# = Pending feature) :rocket:
+- Attendance System
 
-Live version on: http://techademics.infinityfreeapp.com
-Use username s.1 for Student and t.1 for teacher
+-----------------------
+# How to setup this project? :bulb:
+
+1. Install [Xampp](https://www.apachefriends.org/index.html) or any other server solution stack of your choice.
+2. Clone this repository to your xampp/htdocs folder.
+3. Start Apache and MYSQL service.
+4. Create new database with name "schooldata" and import [schooldata.sql](https://github.com/DeepanshuGOYAL05/Techademics/blob/master/mysql%20database/schooldata.sql)
+5. http://localhost/Techademics/ will take you to the login screen.
+6. Use username s.1 for Student and t.1 for teacher.
+
+---------------------
+## Feel free to show your love :heart: by putting a star :star: on this project :v: .
+----------------------
+
+:information_source: Live version on: http://techademics.infinityfreeapp.com
