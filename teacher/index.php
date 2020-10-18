@@ -309,7 +309,7 @@ if(isset($_POST['cid'])){
 				</div>
 				<!-- <button type="button" class="btn btn-info" style="width:90%" data-toggle="collapse" data-target="#viewC">View courses</button><br><br>Add students option in this plus create new course -->
 				<div class="col-md-4 col-sm-12">
-					<div class="card text-white bg-light mb-3" style="max-width: 30rem;">
+					<div class="card text-dark bg-light mb-3" style="max-width: 30rem;">
 						<div class="card-header">
 							<a type="button" class="card-text" data-toggle="collapse" data-target="#addClass" href="#">Schedule Class</a>
 							<!-- <span class="glyphicon glyphicon-plus"></span> -->
@@ -329,7 +329,7 @@ if(isset($_POST['cid'])){
 											}
 										?>
 									<label for="cdate"><h3>Date(YYYY-MM-DD):</h3></label>
-									<input type="text" style="width:80%" class="form-control" name="cdate" id="cdate"  autocomplete="off">
+									<input type="text" style="width:80%" class="form-control" name="cdate" id="cdate"  autocomplete="off"><br>
 									<input type="submit" value="Add a class!"  class="btn btn-success" style="width:80%">	
 								</form>	
 							</div>
@@ -397,7 +397,7 @@ if(isset($_POST['cid'])){
 					<!-- <button type="button" class="btn btn-success " style="width:90%" data-toggle="collapse" data-target="#addAssign">Add an assessment</button> -->
 					<!-- notify for dates from here -->
 					<div class="col-md-4 col-sm-12">
-					<div class="card text-white bg-light mb-3" style="max-width: 30rem;">
+					<div class="card text-dark bg-light mb-3" style="max-width: 30rem;">
 						<div class="card-header">
 							<a type="button" class="card-text" data-toggle="collapse"data-target="#viewAssign" href="#">View assessments</a>
 							<!-- <span class="glyphicon glyphicon-plus"></span> -->
