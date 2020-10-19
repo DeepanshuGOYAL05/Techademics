@@ -23,7 +23,7 @@
 		$(document).ready(function(){
 			var myvar='<div class="container"><center><h1>Account created!</h1><h2>user ID is<br></h2></center></div>';
       var btnvar ='<div class="container"><center><button type="button" class="form-submit goto" style="width:81%" data="0,index.php">Go to login page</button></center></div>';
-		<?PHP
+<?php
 	include'gen.php';
     $con = mysqli_connect($servername,$username,$password,$dbname);
 
@@ -286,13 +286,10 @@ mysqli_close($con);
       			<div class="panel-heading" id="error"></div>
      
     		</div>
-			<div class="panel panel-primary" id="mainc">
-      			<div class="panel-heading" style="font-size: 2em">Register</div>
-      			<div class="panel-body" id="mainccontent">
-      				<form method="post" action="register.php?submit=true" autocomplete="off">
-  					<label for="name"><h3>Name:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['name'];}?>" id="name" name="name" autocomplete="off" required="true">
-  					<label for="acctype"><h3>Account type:</h3></label>
+			<div class="signup-content" id="mainc">
+				<h1 class="form-title">Register</h1>
+				<form method="post" action="register.php?submit=true" autocomplete="off">
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['name'];}?>" id="name" name="name" placeholder="Name" autocomplete="off" required="true">
   					<select class="form-input" name="type" id="acctype" required="true">
 					  <option value="default">Select Account Type</option>  
 						<option value="t">Teacher</option>  
@@ -301,11 +298,10 @@ mysqli_close($con);
   						
 					</select>
 					
-					<label for="studid" id="ls_uid"><h3>Enter ward's userid:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['studid'];}?>" id="s_uid" name="studid">
 					
-					<label for="teacherkey" id="teacherkeylabel"><h3>Enter teacher's key:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['teacherkey'];}?>" id="teacherkey" name="teacherkey">
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['studid'];}?>" placeholder="Enter ward's userid:" id="s_uid" name="studid">
+				
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['teacherkey'];}?>" id="teacherkey" placeholder="Enter teacher's key:" name="teacherkey">
 
             <select class="form-control" name="batch" id="batchk" style="height:30%;" value="<?PHP if($_GET['submit']=='true'){echo $_POST['batch'];}?>">
               
@@ -321,18 +317,18 @@ mysqli_close($con);
          }
           ?>  
           </select>
-					<label for="email"><h3>email:</h3></label>
-  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['email'];}?>" id="email" name="email" autocomplete="off" required="true"/>
-  					<label for="pwd"><h3>Password:</h3></label>
-  					<input type="password" class="form-input" id="pwd" name="pswd" required="true">
-  					<label for="pwd"><h3>Confirm Password:</h3></label>
-  					<input type="password" class="form-input" id="pwd" name="pswdvar" required="true">
+					
+  					<input type="text" class="form-input" value="<?PHP if($_GET['submit']=='true'){echo $_POST['email'];}?>" id="email" placeholder="Email" name="email" autocomplete="off" required="true"/>
+  					
+  					<input type="password" class="form-input" id="pwd" name="pswd" placeholder="Password" required="true">
+  					
+  					<input type="password" class="form-input" id="pwd" name="pswdvar" placeholder="Confirm Password" required="true">
   					<br>
   					<br>
-  					<input type="submit" value="Register"  class="form-submit" style="width:90%">
-			
+  					<input type="submit" value="Register"  class="form-submit">
+					  <p class="loginhere">Already have an account? <a href="index.php" class="loginhere-link">Login here</a>
+                    </p>
 				</form>
-      			</div>
       			
     		</div>
 				
