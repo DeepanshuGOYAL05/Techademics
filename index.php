@@ -1,5 +1,6 @@
 <?PHP
 		include('gen.php');
+		//include('register.php');
 	if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -59,26 +60,53 @@ if (mysqli_connect_errno())
   }
   
 $usernameo=explode('.', $_POST['userid']);
+//$pass_check = password_verify($_POST['pswd'], $pass);
+
+//if($pass_check){
+
 		if($usernameo[0]=='s'){
+			
 			$work=1;
 			//student
-			$sql = "SELECT * FROM `stud` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			$sql = "SELECT * FROM `stud` where (`id`=".$usernameo[1].")";
+			if(is_array($sql)){
+				if(!password_verify($_POST['pswd'], $pass)){
+					$work = 0;
+				}
+			}
+			
 			//echo 'window.location="student/";});</script></head></html>'
 			// exit();
 		}elseif($usernameo[0]=='t'){
+			
 			$work=1;
-			$sql = "SELECT * FROM `teachr` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			$sql = "SELECT * FROM `teachr` where (`id`=".$usernameo[1].")";
+			if(is_array($sql)){
+				if(!password_verify($_POST['pswd'], $pass)){
+					$work = 0;
+				}
+			}
+
 			//redirect to teacher
 			// echo 'window.location="student/";});</script></head></html>'
 			// exit();
 		}elseif($usernameo[0]=='p'){
+			
 			$work=1;
 			//redirect to parent
-			
-			$sql = "SELECT * FROM `parent` where (`id`=".$usernameo[1].") AND (`pwd`='".$_POST['pswd']."')";
+			$sql = "SELECT * FROM `parent` where (`id`=".$usernameo[1].")";
+			if(is_array($sql)){
+				if(!password_verify($_POST['pswd'], $pass)){
+					$work = 0;
+				}
+			}
+
 			// echo 'window.location="student/";});</script></head></html>'
 			// exit();
-		} else{
+		} 
+
+	//}
+		else{
 			$work=0;
 			echo'$("#error_wrap").fadeIn();';
   			echo'$("#error").text("Invalid1");';

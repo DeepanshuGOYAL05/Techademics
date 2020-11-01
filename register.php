@@ -88,12 +88,13 @@ if (mysqli_connect_errno())
   		}
   		else{//all fine!
   			$work=1;
+        $pass = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
   		}
 
 if($_POST['type']=='s'){
 			$query2='SELECT `id` FROM `stud` ORDER BY `id` ASC';
 			//student
-			$sql = "INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES (NULL, '".$_POST['name']."', '0', '".$_POST['email']."', '".$_POST['pswd']."','".$_POST['batch']."');";
+			$sql = "INSERT INTO `stud` (`id`, `sname`, `points`, `email`, `pwd`, `batch`) VALUES (NULL, '".$_POST['name']."', '0', '".$_POST['email']."', '".$pass."','".$_POST['batch']."');";
 			
 		}elseif($_POST['type']=='t'){
 			$query1 = 'SELECT `teacher_key` FROM `formkeys` LIMIT 1';
@@ -102,7 +103,7 @@ if($_POST['type']=='s'){
 				$row = mysqli_fetch_array($result);
 				if($row[0]==$_POST['teacherkey']){
 					$query2='SELECT `id` FROM `teachr`  ORDER BY `id` ASC';
-					$sql = "INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES (NULL, '".$_POST['name']."', '".$_POST['email']."', '".$_POST['pswd']."');";
+					$sql = "INSERT INTO `teachr` (`id`, `tname`, `email`, `pwd`) VALUES (NULL, '".$_POST['name']."', '".$_POST['email']."', '".$pass."');";
 				} else {
 					echo'$("#error_wrap").fadeIn();';
 					echo'$("#error").text("Please enter correct key!");';
@@ -129,7 +130,7 @@ if($_POST['type']=='s'){
   			// mysqli_free_result($result2);
 }
 
-			$sql = "INSERT INTO `parent` (`id`, `pname`, `sid`, `sname`, `email`, `pwd`) VALUES (NULL, '".$_POST['name']."', '".$studidsplit[1]."', '".$sname."', '".$_POST['email']."', '".$_POST['pswd']."');";
+			$sql = "INSERT INTO `parent` (`id`, `pname`, `sid`, `sname`, `email`, `pwd`) VALUES (NULL, '".$_POST['name']."', '".$studidsplit[1]."', '".$sname."', '".$_POST['email']."', '".$pass."');";
 			
 		} else{
 			
